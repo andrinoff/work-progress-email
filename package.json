@@ -1,0 +1,14 @@
+{
+    "name": "emailjs-proxy",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "dependencies": {
+      "cors": "^2.8.5",
+      "dotenv": "^16.0.3",
+      "express": "^4.18.2",
+      "@emailjs/nodejs": "^3.12.0"
+    }
+  }
