@@ -24,13 +24,6 @@ app.post('/send-email', async (req, res) => {
         );
         res.json({ success: true, response });
     } catch (error) {
-        console.error('Error in /send-email:', error);
         res.status(500).json({ success: false, error });
     }
-});
-
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`EmailJS Proxy Server running on port ${PORT}`);
 });
