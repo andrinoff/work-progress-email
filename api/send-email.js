@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());  // Allow cross-origin calls
 app.use(express.json());  // Parse JSON body
 
-app.post('/send-email', async (req, res) => {
+app.post('/send-email', (req, res) => {
     const { email } = req.body;
 
     try {
