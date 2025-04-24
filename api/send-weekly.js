@@ -42,7 +42,7 @@ export default async function handler(req, res) {
     };
 
     try {
-        const response = await emailjs.send(
+        const response = emailjs.send(
             "service_6p3ieyw",
             "template_n7l9kav",
             templateParams,

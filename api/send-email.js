@@ -13,7 +13,7 @@ app.post('/send-email', async (req, res) => {
     const { email } = req.body;
 
     try {
-        const response = await emailjs.send(
+        const response = emailjs.send(
             "service_6p3ieyw",
             "template_bi3l5ac",
             { email: email },
