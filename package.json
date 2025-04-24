@@ -1,9 +1,16 @@
-
 {
   "name": "emailjs-proxy",
   "version": "1.0.0",
   "type": "module",
+  "license": "MIT",
+  "author": "andrinoff",
+  "scripts": {
+    "dev": "vercel dev"
+  },
   "dependencies": {
     "@emailjs/nodejs": "^5.0.2"
+  },
+  "devDependencies": {
+    "vercel": "^30.0.0"
   }
 }
