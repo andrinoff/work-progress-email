@@ -22,6 +22,7 @@ app.post('/send-email', (req, res) => {
                 privateKey: process.env.EMAILJS_PRIVATE_KEY
             }
         );
+        console.log('Email sent successfully:', response);
         res.json({ success: true, response });
     } catch (error) {
         res.status(500).json({ success: false, error });
