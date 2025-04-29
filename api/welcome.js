@@ -39,7 +39,7 @@ export default async function handler(req, res) {
             console.log(emailData)
 
             // Extract the email value
-            emailString = emailData.email;
+            const emailString = emailData.email;
             console.log("Extracted email string from JSON:", emailString);
 
             if (!emailString) {
