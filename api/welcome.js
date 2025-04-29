@@ -57,7 +57,7 @@ export default async function handler(req, res) {
         const response = await emailjs.send(
             "service_6p3ieyw",
             "template_bi3l5ac",
-            emailString,
+            {email : emailString},
             {
                 publicKey: process.env.EMAILJS_PUBLIC_KEY,
                 privateKey: process.env.EMAILJS_PRIVATE_KEY
