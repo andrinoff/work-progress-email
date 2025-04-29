@@ -34,7 +34,9 @@ export default async function handler(req, res) {
         try {
             // Parse the JSON response
             // Assuming the response looks like: { "email": "user@example.com" }
+            console.log(emailResponse)
             const emailData = await emailResponse.json() ;
+            console.log(emailData)
 
             // Extract the email value
             emailString = emailData.email;
@@ -56,7 +58,7 @@ export default async function handler(req, res) {
                 const rawText = await emailResponse.text();
                 console.error("Raw response text that failed JSON parsing:", rawText);
             } catch (textError) {
-                console.error("Could not read raw text after JSON parsing failed.");
+                console.error("Could not read raw text after JSON parsing failed.", jsonError);
             }
             return;
         }
