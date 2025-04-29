@@ -48,8 +48,30 @@ export default async function handler(req, res) {
             }
 
             // Optional: Basic email format validation (now checking the actual email)
-            if (!emailString.includes('@')) {                // Decide if you want to proceed or return here based on your requirements
-            }
+           
+             // --- Send Welcome Email ---
+         // Ensure emailString was successfully retrieved before proceeding
+       
+
+        try {
+            const response = await emailjs.send(
+                "service_6p3ieyw",
+                "template_bi3l5ac",
+                { emailString },
+                {
+                    publicKey: process.env.EMAILJS_PUBLIC_KEY,
+                    privateKey: process.env.EMAILJS_PRIVATE_KEY
+                }
+            );
+            res.status(200).json({ success: true, response });
+        } catch (error) {
+            console.error('Error in /api/server:', error);
+            res.status(500).json({ success: false, error: error.message });
+        }   } catch (error) {
+        // Handle network errors (fetch couldn't reach the server, DNS issues, etc.)        console.error("Network error fetching email:", error);
+        return; // Stop execution on network error
+    
+}
 
         } catch (jsonError) {
             // Handle cases where the response body isn't valid JSON            console.error("JSON parsing error:", jsonError);
@@ -63,32 +85,7 @@ export default async function handler(req, res) {
             return;
         }
 
-    } catch (error) {
-        // Handle network errors (fetch couldn't reach the server, DNS issues, etc.)        console.error("Network error fetching email:", error);
-        return; // Stop execution on network error
-    }
+ 
 
 
-    // --- Send Welcome Email ---
-    // Ensure emailString was successfully retrieved before proceeding
-    if (!emailString) {
-        // This check is slightly redundant due to checks above, but good for safety
-        console.error("Cannot send welcome email because emailString is missing or invalid.");        return;
     }
-
-    try {
-        const response = await emailjs.send(
-            "service_6p3ieyw",
-            "template_bi3l5ac",
-            { emailString },
-            {
-                publicKey: process.env.EMAILJS_PUBLIC_KEY,
-                privateKey: process.env.EMAILJS_PRIVATE_KEY
-            }
-        );
-        res.status(200).json({ success: true, response });
-    } catch (error) {
-        console.error('Error in /api/server:', error);
-        res.status(500).json({ success: false, error: error.message });
-    }
-}
