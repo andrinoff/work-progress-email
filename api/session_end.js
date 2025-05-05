@@ -67,7 +67,7 @@ export default async function handler(req, res) {
             const response = await emailjs.send(
                 "service_6p3ieyw",
                 "template_n7l9kav",
-                {email : emailString, time_worked : time_worked, date: JSON.stringifify(newPaddedDate)},
+                {email : emailString, time_worked : time_worked, date: JSON.stringify(newPaddedDate)},
                 {
                     publicKey: process.env.EMAILJS_PUBLIC_KEY,
                     privateKey: process.env.EMAILJS_PRIVATE_KEY
