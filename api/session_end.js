@@ -53,13 +53,21 @@ export default async function handler(req, res) {
              // Ensure emailString was successfully retrieved before proceeding
            
             // Get today's date
-            const today = new Date();
+            const dateObj = new Date();
+            const month   = dateObj.getUTCMonth() + 1; // months from 1-12
+            const day     = dateObj.getUTCDate();
+            const year    = dateObj.getUTCFullYear();
+
+            // Using padded values, so that 2023/1/7 becomes 2023/01/07
+            const pMonth        = month.toString().padStart(2,"0");
+            const pDay          = day.toString().padStart(2,"0");
+            const newPaddedDate = `${year}/${pMonth}/${pDay}`;
             
            
             const response = await emailjs.send(
                 "service_6p3ieyw",
                 "template_n7l9kav",
-                {email : emailString, time_worked : time_worked, date: JSON.stringify(today)},
+                {email : emailString, time_worked : time_worked, date: JSON.stringify(newPaddedDate)},
                 {
                     publicKey: process.env.EMAILJS_PUBLIC_KEY,
                     privateKey: process.env.EMAILJS_PRIVATE_KEY
