@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     const { apiKey } = req.body;
         try {
         console.log("Fetching email for API key...");
-        const emailResponse = await fetch("https://work-progress-backend.vercel.app/api/server", {
+        const emailResponse = await fetch("https://work-progress-backend.vercel.app/api/getEmail", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -55,8 +55,8 @@ export default async function handler(req, res) {
 
        
         const response = await emailjs.send(
-            "service_6p3ieyw",
-            "template_bi3l5ac",
+            "service_xw4jmqe",
+            "template_tj5g1le",
             {email : emailString},
             {
                 publicKey: process.env.EMAILJS_PUBLIC_KEY,
